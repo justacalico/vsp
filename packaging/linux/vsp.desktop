@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VSP
+Comment=VNC + SSH client — one window into every machine
+Exec=vsp
+Icon=vsp
+Terminal=false
+Categories=Network;RemoteAccess;
+StartupWMClass=vsp
