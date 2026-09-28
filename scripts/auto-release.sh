@@ -29,7 +29,7 @@ if [ -z "$TAG" ]; then
 fi
 
 push_bump() {
-  git push -o ci.skip origin HEAD:main
+  git push -o ci.skip origin HEAD:refs/heads/main
 }
 
 if ! push_bump; then
