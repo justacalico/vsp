@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.1.5](https://gitlab.com/HttpAnimations/vsp/compare/bba00f7476c9c285ca283ba398b81879e36bca71..0.1.5) - 2026-09-28
+#### Bug Fixes
+- ipa 体积直接下载量 - ([bba00f7](https://gitlab.com/HttpAnimations/vsp/commit/bba00f7476c9c285ca283ba398b81879e36bca71)) - Calico
+
+- - -
+
 ## [0.1.4](https://gitlab.com/HttpAnimations/vsp/compare/614aa59d385cf4c3e95d88e75824730b5ad53950..0.1.4) - 2026-09-28
 #### Bug Fixes
 - ipa 大小从自家包仓库取 - ([614aa59](https://gitlab.com/HttpAnimations/vsp/commit/614aa59d385cf4c3e95d88e75824730b5ad53950)) - Calico
