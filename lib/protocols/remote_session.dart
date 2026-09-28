@@ -35,6 +35,8 @@ abstract class RemoteSession {
 
   Future<void> dispose() async {
     await close();
-    if (!_status.isClosed) await _status.close();
+    // Listeners get done on the event loop's schedule; a waiting
+    // StreamBuilder would otherwise hold this open.
+    if (!_status.isClosed) unawaited(_status.close());
   }
 }

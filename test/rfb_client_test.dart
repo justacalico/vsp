@@ -127,7 +127,12 @@ class FakeRfbServer implements RfbChannel {
   void banner() => _in.add(Uint8List.fromList('RFB 003.008\n'.codeUnits));
 
   @override
-  Future<void> close() => _in.close();
+  Future<void> close() {
+    // Match real socket semantics — close resolves immediately;
+    // the stream's done reaches the listener on its own schedule.
+    _in.close();
+    return Future.value();
+  }
 }
 
 RfbClient _client(FakeRfbServer server, {String? password}) => RfbClient(

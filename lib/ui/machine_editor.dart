@@ -239,13 +239,19 @@ class _MachineEditorState extends State<MachineEditor> {
             else
               DropdownButtonFormField<String>(
                 initialValue: c.keyId,
+                isExpanded: true,
                 decoration: const InputDecoration(labelText: 'SSH key'),
                 items: [
                   for (final k in state.keys)
                     DropdownMenuItem(
                       value: k.id,
-                      child: Text('${k.name} · ${k.fingerprint}',
-                          overflow: TextOverflow.ellipsis),
+                      child: SizedBox(
+                        width: 260,
+                        child: Text(
+                          '${k.name} · ${k.fingerprint.substring(k.fingerprint.length - 12)}',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
                 ],
                 onChanged: (v) => c.keyId = v,

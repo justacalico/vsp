@@ -368,7 +368,7 @@ class AppState extends ChangeNotifier {
 
   Future<void> disconnect(String sessionId) async {
     final sub = _sessionSubs.remove(sessionId);
-    await sub?.cancel();
+    unawaited(sub?.cancel());
     final s = _sessions.remove(sessionId);
     if (s != null) {
       await s.dispose();

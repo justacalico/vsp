@@ -31,7 +31,7 @@ class VncSession extends RemoteSession {
 
   @override
   Future<void> close() async {
-    await _sub.cancel();
+    unawaited(_sub.cancel());
     await client.close();
     emit(SessionPhase.closed);
   }

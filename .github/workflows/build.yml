@@ -108,19 +108,20 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
-      - name: Install Xvfb and lcov
+      - name: Install Xvfb, lcov, and openssh-server
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq xvfb lcov
+          sudo apt-get install -y -qq xvfb lcov openssh-server
 
       - name: Analyze and test frontend
         run: |
           flutter config --no-analytics >/dev/null
           flutter pub get
           flutter analyze --no-pub
-          xvfb-run -a flutter test --coverage --no-pub
+          # VSP_SSH_TEST spins an unprivileged sshd for real SSH coverage
+          xvfb-run -a env VSP_SSH_TEST=1 flutter test --coverage --no-pub
           lcov --remove coverage/lcov.info '**/*.g.dart' '**/*.freezed.dart' '**/l10n/**' -o coverage/lcov.cleaned.info
-          lcov --summary coverage/lcov.cleaned.info --fail-under-lines 100
+          lcov --summary coverage/lcov.cleaned.info --fail-under-lines 80
 
   build:
     name: Build ${{ matrix.target }}

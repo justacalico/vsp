@@ -348,12 +348,15 @@ class RfbClient {
     if (state == RfbState.connected || state == RfbState.connecting) {
       _emit(RfbState.closed);
     }
-    // Socket first: its done event ends the subscription cleanly.
-    // Cancelling before closing can strand a scripted channel waiting
-    // to deliver done to a dead listener.
-    await _socket?.close();
-    await _sub?.cancel();
-    if (!_frames.isClosed) await _frames.close();
-    if (!_events.isClosed) await _events.close();
+    // Fire and forget: a real socket resolves close() immediately and
+    // the stream's done reaches listeners on its own schedule. Awaiting
+    // either can deadlock when the peer stops answering mid-read.
+    final socket = _socket;
+    _socket = null;
+    unawaited(socket?.close());
+    unawaited(_sub?.cancel());
+    _sub = null;
+    if (!_frames.isClosed) unawaited(_frames.close());
+    if (!_events.isClosed) unawaited(_events.close());
   }
 }
