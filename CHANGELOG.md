@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.1.2](https://gitlab.com/HttpAnimations/vsp/compare/e79a58474f68046be205d706210a343bb14432f6..0.1.2) - 2026-09-28
+#### Bug Fixes
+- Pages 唯一域名用根路径 base href - ([e79a584](https://gitlab.com/HttpAnimations/vsp/commit/e79a58474f68046be205d706210a343bb14432f6)) - Calico
+
+- - -
+
 ## [0.1.1](https://gitlab.com/HttpAnimations/vsp/compare/3e2084ee56b640889e6c039058aacd0d054aa12a..0.1.1) - 2026-09-28
 #### Bug Fixes
 - busybox awk 没有 IGNORECASE - ([3e2084e](https://gitlab.com/HttpAnimations/vsp/commit/3e2084ee56b640889e6c039058aacd0d054aa12a)) - Calico
