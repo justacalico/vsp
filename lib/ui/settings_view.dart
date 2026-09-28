@@ -40,10 +40,10 @@ class SettingsView extends StatelessWidget {
                           dense: true,
                           title: Text(e.key,
                               style:
-                                  const TextStyle(fontFamily: 'monospace')),
+                                  const TextStyle(fontFamily: 'JetBrains Mono')),
                           subtitle: Text(e.value,
                               style: const TextStyle(
-                                  fontFamily: 'monospace', fontSize: 11)),
+                                  fontFamily: 'JetBrains Mono', fontSize: 11)),
                           trailing: IconButton(
                             icon: const Icon(Icons.close, size: 16),
                             tooltip: 'Forget',

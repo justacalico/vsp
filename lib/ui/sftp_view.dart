@@ -132,7 +132,7 @@ class _SftpViewState extends State<SftpView> {
           onTap: _copyPath,
           child: Text(_path,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontFamily: 'monospace', fontSize: 14)),
+              style: const TextStyle(fontFamily: 'JetBrains Mono', fontSize: 14)),
         ),
         actions: [
           IconButton(
@@ -173,7 +173,7 @@ class _SftpViewState extends State<SftpView> {
                           ),
                           title: Text(
                             e.filename,
-                            style: const TextStyle(fontFamily: 'monospace', fontSize: 13),
+                            style: const TextStyle(fontFamily: 'JetBrains Mono', fontSize: 13),
                           ),
                           subtitle: Text(
                             dir ? 'directory' : _fmtSize(e.attr.size ?? 0),

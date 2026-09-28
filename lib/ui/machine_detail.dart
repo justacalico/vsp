@@ -41,7 +41,7 @@ class MachineDetail extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(m.host,
                         style: TextStyle(
-                          fontFamily: 'monospace',
+                          fontFamily: 'JetBrains Mono',
                           color: Theme.of(context)
                               .colorScheme
                               .onSurface
@@ -112,7 +112,7 @@ class MachineDetail extends StatelessWidget {
               const SizedBox(height: 2),
               Text(m.host,
                   style: TextStyle(
-                    fontFamily: 'monospace',
+                    fontFamily: 'JetBrains Mono',
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface

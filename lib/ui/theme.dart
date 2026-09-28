@@ -24,7 +24,9 @@ class VspTheme {
   static const _hairlineLight = Color(0xFFD9D9DE);
 
   static ThemeData dark() {
-    final base = ThemeData.dark(useMaterial3: true);
+    final base = ThemeData.dark(useMaterial3: true).copyWith(
+      textTheme: ThemeData.dark().textTheme.apply(fontFamily: 'Inter'),
+    );
     return base.copyWith(
       brightness: Brightness.dark,
       scaffoldBackgroundColor: _bgDark,
@@ -108,7 +110,9 @@ class VspTheme {
   }
 
   static ThemeData light() {
-    final base = ThemeData.light(useMaterial3: true);
+    final base = ThemeData.light(useMaterial3: true).copyWith(
+      textTheme: ThemeData.light().textTheme.apply(fontFamily: 'Inter'),
+    );
     return base.copyWith(
       brightness: Brightness.light,
       scaffoldBackgroundColor: _bgLight,

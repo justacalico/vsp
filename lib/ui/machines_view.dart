@@ -137,7 +137,7 @@ class MachineCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12.5,
                         color: scheme.onSurface.withValues(alpha: 0.55),
-                        fontFamily: 'monospace',
+                        fontFamily: 'JetBrains Mono',
                       ),
                     ),
                   ],

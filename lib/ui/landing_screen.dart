@@ -295,7 +295,7 @@ class _Steps extends StatelessWidget {
                         width: 56,
                         child: Text(n,
                             style: TextStyle(
-                              fontFamily: 'monospace',
+                              fontFamily: 'JetBrains Mono',
                               color: theme.colorScheme.primary,
                               fontWeight: FontWeight.w700,
                             )),

@@ -56,7 +56,7 @@ class KeysView extends StatelessWidget {
                     subtitle: Text(
                       '${k.type.label} · ${k.fingerprint}',
                       style: const TextStyle(
-                          fontFamily: 'monospace', fontSize: 12),
+                          fontFamily: 'JetBrains Mono', fontSize: 12),
                     ),
                     isThreeLine: true,
                     trailing: Row(

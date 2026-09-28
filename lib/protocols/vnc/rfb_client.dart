@@ -232,7 +232,8 @@ class RfbClient {
   }
 
   Future<void> requestUpdate({bool incremental = true}) async {
-    _send([3, incremental ? 1 : 0, 0, 0, (width >> 8) & 0xFF, width & 0xFF,
+    _send([3, incremental ? 1 : 0, 0, 0, 0, 0,
+      (width >> 8) & 0xFF, width & 0xFF,
       (height >> 8) & 0xFF, height & 0xFF]);
   }
 
@@ -347,8 +348,11 @@ class RfbClient {
     if (state == RfbState.connected || state == RfbState.connecting) {
       _emit(RfbState.closed);
     }
-    await _sub?.cancel();
+    // Socket first: its done event ends the subscription cleanly.
+    // Cancelling before closing can strand a scripted channel waiting
+    // to deliver done to a dead listener.
     await _socket?.close();
+    await _sub?.cancel();
     if (!_frames.isClosed) await _frames.close();
     if (!_events.isClosed) await _events.close();
   }

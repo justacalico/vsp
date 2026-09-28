@@ -26,7 +26,7 @@ class AppState extends ChangeNotifier {
   }) {
     registry = ProtocolRegistry(
       keyLoader: (id) => _secrets.read('key:$id'),
-      hostKeyVerifier: _verifyHostKey,
+      hostKeyVerifier: verifyHostKey,
     );
   }
 
@@ -316,7 +316,7 @@ class AppState extends ChangeNotifier {
 
   /// Trust-on-first-use host key check. A changed fingerprint refuses
   /// the connection — that is the only useful signal SSH gives you.
-  bool _verifyHostKey(String host, String type, String fingerprint) {
+  bool verifyHostKey(String host, String type, String fingerprint) {
     final map = knownHosts;
     final stored = map[host];
     if (stored == null) {

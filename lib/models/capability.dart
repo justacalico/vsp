@@ -61,6 +61,7 @@ class SshConfig extends CapabilityConfig {
 
   @override
   Map<String, dynamic> toJson() => {
+        'enabled': enabled,
         'port': port,
         'username': username,
         'auth': auth.name,
@@ -97,6 +98,7 @@ class VncConfig extends CapabilityConfig {
 
   @override
   Map<String, dynamic> toJson() => {
+        'enabled': enabled,
         'port': port,
         'viewOnly': viewOnly,
         'shared': shared,
@@ -126,6 +128,7 @@ class RdpConfig extends CapabilityConfig {
 
   @override
   Map<String, dynamic> toJson() => {
+        'enabled': enabled,
         'port': port,
         'username': username,
         'domain': domain,
@@ -155,6 +158,7 @@ class MoonlightConfig extends CapabilityConfig {
 
   @override
   Map<String, dynamic> toJson() => {
+        'enabled': enabled,
         'port': port,
         'resolution': resolution,
         'fps': fps,
