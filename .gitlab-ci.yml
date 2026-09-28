@@ -158,12 +158,10 @@ pages:
       # release tag and the real IPA size from GitHub.
       mkdir -p public/altstore
       if [ -f altstore/apps.json ]; then
-        # the IPA is already in our package registry — HEAD its size
+        # stream it into the void — size_download counts real bytes
         PKG_BASE="$CI_SERVER_URL/api/v4/projects/$CI_PROJECT_ID/packages/generic/release-assets/$RELEASE_TAG"
-        SIZE=$(curl -sI -H "JOB-TOKEN: $CI_JOB_TOKEN" \
-          "$PKG_BASE/vsp-ios-arm64-unsigned.ipa" \
-          | tr -d '\r' | tr 'A-Z' 'a-z' \
-          | awk '/^content-length:/{print $2}' | tail -1)
+        SIZE=$(curl -fsSL -o /dev/null -w '%{size_download}' -H "JOB-TOKEN: $CI_JOB_TOKEN" \
+          "$PKG_BASE/vsp-ios-arm64-unsigned.ipa" || echo 0)
         sed -e "s/{{TAG}}/$RELEASE_TAG/g" -e "s/"size": 0/"size": ${SIZE:-0}/"           altstore/apps.json > public/altstore/apps.json
       fi
       cp assets/icon-1024.png public/altstore/icon.png 2>/dev/null || true
