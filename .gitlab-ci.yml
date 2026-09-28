@@ -163,7 +163,9 @@ pages:
         SIZE=$(curl -fsSL -o /dev/null -w '%{size_download}' -H "JOB-TOKEN: $CI_JOB_TOKEN" \
           "$PKG_BASE/vsp-ios-arm64-unsigned.ipa" || echo 0)
         echo "ipa size for altstore: $SIZE"
-        sed -e "s/{{TAG}}/$RELEASE_TAG/g" -e "s/"size": 0/"size": ${SIZE:-0}/"           altstore/apps.json > public/altstore/apps.json
+        sed -e "s/{{TAG}}/$RELEASE_TAG/g" \
+            -e "s/\"size\": 0/\"size\": ${SIZE:-0}/" \
+            altstore/apps.json > public/altstore/apps.json
       fi
       cp assets/icon-1024.png public/altstore/icon.png 2>/dev/null || true
   artifacts:
