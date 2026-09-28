@@ -1,0 +1,30 @@
+{
+  "name": "VSP",
+  "identifier": "com.httpanimations.vsp",
+  "sourceURL": "https://httpanimations.gitlab.io/vsp/altstore/apps.json",
+  "apps": [
+    {
+      "name": "VSP",
+      "bundleIdentifier": "com.httpanimations.vsp",
+      "developerName": "HttpAnimations",
+      "subtitle": "VNC + SSH client",
+      "localizedDescription": "One window into every machine. SSH terminals, VNC desktops, keys and host fingerprints in one place.\n\nAdd a machine, flip on the protocols it speaks, and connect. SSH keys are generated on-device and deployed in a tap; machine secrets can sit behind a vault password.",
+      "iconURL": "https://httpanimations.gitlab.io/vsp/altstore/icon.png",
+      "tintColor": "#3B82F6",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": []
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "date": "2026-09-27",
+          "localizedDescription": "First public build: SSH terminal + SFTP browser, pure-Dart VNC client, machine vault encryption.",
+          "downloadURL": "https://github.com/justacalico/vsp/releases/download/{{TAG}}/vsp-ios-arm64-unsigned.ipa",
+          "size": 0
+        }
+      ]
+    }
+  ]
+}
