@@ -101,3 +101,22 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  image_path: assets/icon-1024.png
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#15181E"
+  adaptive_icon_foreground: assets/icon-1024.png
+  web:
+    generate: true
+    background_color: "#15181E"
+    theme_color: "#15181E"
+  macos:
+    generate: true
+  windows:
+    generate: true
+    icon_size: 256
+  linux:
+    generate: true

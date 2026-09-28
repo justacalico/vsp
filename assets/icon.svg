@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" rx="220" fill="#15181E"/>
+  <rect x="32" y="32" width="960" height="960" rx="200" fill="none" stroke="#2A2F38" stroke-width="2"/>
+  <!-- terminal chevron: SSH green -->
+  <path d="M 250 340 L 480 512 L 250 684"
+        fill="none" stroke="#30D158" stroke-width="96"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- block cursor: VNC blue -->
+  <rect x="560" y="596" width="230" height="96" rx="18" fill="#0A84FF"/>
+</svg>
