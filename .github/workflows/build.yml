@@ -120,7 +120,9 @@ jobs:
           flutter analyze --no-pub
           # VSP_SSH_TEST spins an unprivileged sshd for real SSH coverage
           xvfb-run -a env VSP_SSH_TEST=1 flutter test --coverage --no-pub
-          lcov --remove coverage/lcov.info '**/*.g.dart' '**/*.freezed.dart' '**/l10n/**' -o coverage/lcov.cleaned.info
+          lcov --ignore-errors unused \
+            --remove coverage/lcov.info '**/*.g.dart' '**/*.freezed.dart' '**/l10n/**' \
+            -o coverage/lcov.cleaned.info
           lcov --summary coverage/lcov.cleaned.info --fail-under-lines 80
 
   build:
