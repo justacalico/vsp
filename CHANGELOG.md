@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.1.1](https://gitlab.com/HttpAnimations/vsp/compare/3e2084ee56b640889e6c039058aacd0d054aa12a..0.1.1) - 2026-09-28
+#### Bug Fixes
+- busybox awk 没有 IGNORECASE - ([3e2084e](https://gitlab.com/HttpAnimations/vsp/commit/3e2084ee56b640889e6c039058aacd0d054aa12a)) - Calico
+#### Documentation
+- AGENTS.md - ([e509994](https://gitlab.com/HttpAnimations/vsp/commit/e50999467b9cc1441dfe43139200d32627e3d9b2)) - Calico
+
+- - -
+
 ## [0.1.0](https://gitlab.com/HttpAnimations/vsp/compare/51328e92ca9851139156e8aca37a73457cc55ee9..0.1.0) - 2026-09-28
 #### Features
 - 应用图标 - ([2a43fab](https://gitlab.com/HttpAnimations/vsp/commit/2a43fab83fb55c51ac4007a277485146f32357d6)) - Calico
