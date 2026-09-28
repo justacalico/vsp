@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.1.6](https://gitlab.com/HttpAnimations/vsp/compare/1a9a1e005e4f99137a5ea6a87c2d7ff46bf3f627..0.1.6) - 2026-09-28
+#### Bug Fixes
+- sed 引号转义 - ([e9861fa](https://gitlab.com/HttpAnimations/vsp/commit/e9861fa3ee5573a9257a8f06792d0d6f6f9cdabd)) - Calico
+#### Continuous Integration
+- altstore 体积调试输出 - ([1a9a1e0](https://gitlab.com/HttpAnimations/vsp/commit/1a9a1e005e4f99137a5ea6a87c2d7ff46bf3f627)) - Calico
+
+- - -
+
 ## [0.1.5](https://gitlab.com/HttpAnimations/vsp/compare/bba00f7476c9c285ca283ba398b81879e36bca71..0.1.5) - 2026-09-28
 #### Bug Fixes
 - ipa 体积直接下载量 - ([bba00f7](https://gitlab.com/HttpAnimations/vsp/commit/bba00f7476c9c285ca283ba398b81879e36bca71)) - Calico
