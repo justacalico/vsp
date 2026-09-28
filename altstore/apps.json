@@ -1,7 +1,7 @@
 {
   "name": "VSP",
   "identifier": "com.httpanimations.vsp",
-  "sourceURL": "https://httpanimations.gitlab.io/vsp/altstore/apps.json",
+  "sourceURL": "https://vsp-7ab886.gitlab.io/altstore/apps.json",
   "apps": [
     {
       "name": "VSP",
@@ -9,7 +9,7 @@
       "developerName": "HttpAnimations",
       "subtitle": "VNC + SSH client",
       "localizedDescription": "One window into every machine. SSH terminals, VNC desktops, keys and host fingerprints in one place.\n\nAdd a machine, flip on the protocols it speaks, and connect. SSH keys are generated on-device and deployed in a tap; machine secrets can sit behind a vault password.",
-      "iconURL": "https://httpanimations.gitlab.io/vsp/altstore/icon.png",
+      "iconURL": "https://vsp-7ab886.gitlab.io/altstore/icon.png",
       "tintColor": "#3B82F6",
       "category": "utilities",
       "appPermissions": {

@@ -378,7 +378,7 @@ jobs:
           mkdir -p "$ARTIFACTS_DIR"
           flutter config --no-analytics >/dev/null
           flutter pub get
-          flutter build web --release --base-href /vsp/ --build-name="$VERSION" --build-number="$BUILD_NUMBER"
+          flutter build web --release --base-href / --build-name="$VERSION" --build-number="$BUILD_NUMBER"
           tar -czf "$ARTIFACTS_DIR/vsp-web.tar.gz" -C build/web .
 
       - name: Upload artifacts
