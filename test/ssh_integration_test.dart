@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -99,7 +98,7 @@ LogLevel ERROR
     keyMeta = await state.importKey(clientKeyPem, name: 'test');
 
     fixtureMachine = await state.addMachine(name: 'ui', host: '127.0.0.1');
-    final c = fixtureMachine.configFor(ProtocolKind.ssh) as SshConfig
+    (fixtureMachine.configFor(ProtocolKind.ssh) as SshConfig)
       ..enabled = true
       ..port = port
       ..username = Platform.environment['USER']!
@@ -116,7 +115,7 @@ LogLevel ERROR
 
   test('key auth connects, execs, deploys, and browses sftp', () async {
     final m = await state.addMachine(name: 'fixture', host: '127.0.0.1');
-    final c = m.configFor(ProtocolKind.ssh) as SshConfig
+    (m.configFor(ProtocolKind.ssh) as SshConfig)
       ..enabled = true
       ..port = port
       ..username = Platform.environment['USER']!
@@ -167,7 +166,7 @@ LogLevel ERROR
 
   test('disconnect closes and a second connect works', () async {
     final m = await state.addMachine(name: 'fixture2', host: '127.0.0.1');
-    final c = m.configFor(ProtocolKind.ssh) as SshConfig
+    (m.configFor(ProtocolKind.ssh) as SshConfig)
       ..enabled = true
       ..port = port
       ..username = Platform.environment['USER']!
@@ -193,7 +192,7 @@ LogLevel ERROR
     final badMeta = await state.importKey(badPem, name: 'bad');
 
     final m = await state.addMachine(name: 'fixture3', host: '127.0.0.1');
-    final c = m.configFor(ProtocolKind.ssh) as SshConfig
+    (m.configFor(ProtocolKind.ssh) as SshConfig)
       ..enabled = true
       ..port = port
       ..username = Platform.environment['USER']!

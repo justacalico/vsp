@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vsp/models/capability.dart';
 import 'package:vsp/models/machine.dart';
 import 'package:vsp/models/protocol_kind.dart';
 import 'package:vsp/protocols/remote_session.dart';
