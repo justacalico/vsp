@@ -158,8 +158,7 @@ pages:
       # release tag and the real IPA size from GitHub.
       mkdir -p public/altstore
       if [ -f altstore/apps.json ]; then
-        SIZE=$(curl -sIL -o /dev/null -w '%{size_download}' --head           "https://github.com/justacalico/vsp/releases/download/$RELEASE_TAG/vsp-ios-arm64-unsigned.ipa"           || echo 0)
-        SIZE=$(curl -sIL "https://github.com/justacalico/vsp/releases/download/$RELEASE_TAG/vsp-ios-arm64-unsigned.ipa"           | awk 'BEGIN{IGNORECASE=1} /^content-length:/{print $2}' | tr -d '\r' | tail -1)
+        SIZE=$(curl -sIL "https://github.com/justacalico/vsp/releases/download/$RELEASE_TAG/vsp-ios-arm64-unsigned.ipa"           | tr -d '\r' | tr 'A-Z' 'a-z'           | awk '/^content-length:/{print $2}' | tail -1)
         sed -e "s/{{TAG}}/$RELEASE_TAG/g" -e "s/"size": 0/"size": ${SIZE:-0}/"           altstore/apps.json > public/altstore/apps.json
       fi
       cp assets/icon-1024.png public/altstore/icon.png 2>/dev/null || true
