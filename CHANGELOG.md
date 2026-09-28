@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.1.3](https://gitlab.com/HttpAnimations/vsp/compare/96663fe5664a56bc87fd34215bcc9732329bf229..0.1.3) - 2026-09-28
+#### Bug Fixes
+- 页面元信息 + AltStore 体积走 API - ([96663fe](https://gitlab.com/HttpAnimations/vsp/commit/96663fe5664a56bc87fd34215bcc9732329bf229)) - Calico
+
+- - -
+
 ## [0.1.2](https://gitlab.com/HttpAnimations/vsp/compare/e79a58474f68046be205d706210a343bb14432f6..0.1.2) - 2026-09-28
 #### Bug Fixes
 - Pages 唯一域名用根路径 base href - ([e79a584](https://gitlab.com/HttpAnimations/vsp/commit/e79a58474f68046be205d706210a343bb14432f6)) - Calico
