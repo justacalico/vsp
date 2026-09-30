@@ -341,8 +341,14 @@ class AppState extends ChangeNotifier {
   Future<RemoteSession> connect(Machine machine, ProtocolKind kind) async {
     final id = sessionId(machine.id, kind);
     final existing = _sessions[id];
-    if (existing != null && existing.phase != SessionPhase.closed) {
-      return existing;
+    if (existing != null) {
+      if (existing.phase == SessionPhase.connected ||
+          existing.phase == SessionPhase.connecting) {
+        return existing;
+      }
+      // Failed or closed: drop the dead session so a retry starts
+      // from a clean socket instead of reusing a broken one.
+      await disconnect(id);
     }
     final secrets = await secretsFor(machine.id);
     if (kind == ProtocolKind.ssh) {

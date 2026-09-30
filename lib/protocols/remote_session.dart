@@ -24,11 +24,18 @@ abstract class RemoteSession {
   final _status = StreamController<SessionStatus>.broadcast();
   SessionPhase phase = SessionPhase.connecting;
 
+  /// Last non-empty status message, kept so surfaces that miss the
+  /// stream event (or rebuild after it) can still show the reason.
+  String? message;
+
   Stream<SessionStatus> get status => _status.stream;
 
   void emit(SessionPhase phase, [String? message]) {
     this.phase = phase;
-    if (!_status.isClosed) _status.add(SessionStatus(phase, message));
+    if (message != null) this.message = message;
+    if (!_status.isClosed) {
+      _status.add(SessionStatus(phase, message ?? this.message));
+    }
   }
 
   Future<void> close();

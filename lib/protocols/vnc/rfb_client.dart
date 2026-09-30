@@ -76,6 +76,7 @@ class RfbClient {
   // Incoming byte buffer.
   final Queue<int> _in = Queue<int>();
   Completer<void>? _waiter;
+  int _needed = 0;
   Object? _fatal;
   bool _closing = false;
 
@@ -87,13 +88,16 @@ class RfbClient {
   Future<void> _buffered(int n) {
     if (_in.length >= n) return Future.value();
     if (_fatal != null) return Future.error(_fatal!);
+    _needed = n;
     _waiter ??= Completer<void>();
     return _waiter!.future;
   }
 
   void _onData(Uint8List chunk) {
     _in.addAll(chunk);
-    if (_waiter != null && !_waiter!.isCompleted) {
+    if (_waiter != null &&
+        !_waiter!.isCompleted &&
+        _in.length >= _needed) {
       _waiter!.complete();
       _waiter = null;
     }
@@ -121,7 +125,10 @@ class RfbClient {
 
   Future<Uint8List> _read(int n) async {
     await _buffered(n);
-    if (_in.length < n) throw _fatal ?? const RfbException('short read');
+    if (_in.length < n) {
+      throw _fatal ??
+          const RfbException('Server sent less data than expected');
+    }
     final out = Uint8List(n);
     for (var i = 0; i < n; i++) {
       out[i] = _in.removeFirst();
@@ -147,7 +154,7 @@ class RfbClient {
     try {
       _socket = await _connector(host, port);
     } catch (e) {
-      _fail('Could not reach $host:$port');
+      _fail('Could not reach $host:$port: $e');
       rethrow;
     }
     _sub = _socket!.stream.listen(_onData,
