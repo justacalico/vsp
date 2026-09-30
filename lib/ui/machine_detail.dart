@@ -190,8 +190,10 @@ class _ConnectTile extends StatelessWidget {
             : kind.description),
         subtitle: failed
             ? Text(
-                'Failed — tap to retry',
+                '${session?.message ?? 'Connection failed'} · tap to retry',
                 style: TextStyle(color: VspColors.of(context).bad),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               )
             : !kind.isImplemented
                 ? const Text('Not supported yet', style: TextStyle(fontSize: 12))
@@ -209,7 +211,11 @@ class _ConnectTile extends StatelessWidget {
                     label: const Text('Connect'),
                   )
                 : null,
-        onTap: live ? () => _open(context, session) : null,
+        onTap: live
+            ? () => _open(context, session)
+            : failed
+                ? () => _connect(context, state)
+                : null,
       ),
     );
   }

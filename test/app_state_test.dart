@@ -4,6 +4,7 @@ import 'package:vsp/app_state.dart';
 import 'package:vsp/models/capability.dart';
 import 'package:vsp/models/protocol_kind.dart';
 import 'package:vsp/models/ssh_key.dart';
+import 'package:vsp/protocols/remote_session.dart';
 import 'package:vsp/protocols/vnc/vnc_driver.dart';
 import 'package:vsp/security/secure_store.dart';
 import 'package:vsp/security/vault.dart';
@@ -174,6 +175,28 @@ void main() {
 
       await s.disconnect('vnc:${m.id}');
       expect(s.sessionFor(m.id, ProtocolKind.vnc), isNull);
+      await s.disconnectAll();
+    });
+
+    test('connect replaces a failed session instead of reusing it',
+        () async {
+      final s = await _state();
+      s.registry.drivers[ProtocolKind.vnc] =
+          VncDriver(connector: (h, p) async {
+        final server = FakeRfbServer();
+        Future.microtask(server.banner);
+        return server;
+      });
+      final m = await s.addMachine(name: 'box', host: 'h');
+      (m.configFor(ProtocolKind.vnc) as VncConfig).enabled = true;
+      await s.updateMachine(m);
+
+      final session = await s.connect(m, ProtocolKind.vnc);
+      await pumpEventQueue();
+      session.emit(SessionPhase.failed, 'boom');
+      final again = await s.connect(m, ProtocolKind.vnc);
+      expect(again, isNot(same(session)));
+      expect(s.sessionFor(m.id, ProtocolKind.vnc), same(again));
       await s.disconnectAll();
     });
 

@@ -124,7 +124,9 @@ class FakeRfbServer implements RfbChannel {
     ]));
   }
 
-  void banner() => _in.add(Uint8List.fromList('RFB 003.008\n'.codeUnits));
+  void push(List<int> bytes) => _in.add(Uint8List.fromList(bytes));
+
+  void banner() => push('RFB 003.008\n'.codeUnits);
 
   @override
   Future<void> close() {
@@ -161,6 +163,26 @@ void main() {
       expect(client.pixels.length, 32);
       // alpha fixup ran
       expect(client.pixels[3], 0xFF);
+      await client.close();
+    });
+
+    test('handshake survives data split across chunks', () async {
+      // TCP delivers arbitrary chunk boundaries; a read must not wake
+      // until the full request is buffered.
+      final server = FakeRfbServer(securityTypes: [1]);
+      final client = RfbClient(
+        host: 'test',
+        connector: (h, p) async {
+          Future.microtask(() {
+            server.push('RFB 003.'.codeUnits);
+            server.push('008\n'.codeUnits);
+          });
+          return server;
+        },
+      );
+      await client.connect();
+      expect(client.state, RfbState.connected);
+      expect(client.serverName, 'fake-server');
       await client.close();
     });
 
